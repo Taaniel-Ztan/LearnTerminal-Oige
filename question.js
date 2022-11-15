@@ -1,23 +1,25 @@
 import inquirer from 'inquirer';
 inquirer
     .prompt([
-        {type: 'input', name: 'age', message: 'How old are you?'},
-        {type: 'input', name: 'height', message: 'What is your height?'},
-        {type: 'input', name: 'gender', message: 'What is your gender?'},
-        {type: 'input', name: 'color', message: 'What is your favourite color?'},
-        {type: 'input', name: 'car', message: 'What is your favourite car?'},
-        {type: 'input', name: 'sex', message: 'Is condom a sex?'},
-        {type: 'password', name: 'password', message: 'What is your github password?'},
-        {type: 'confirm', name: 'confirm', message: 'Do you live in the city?', default: 'default'},
+        {type:'input',name:'input',message:'Kas te kasutate ühistransporti?'},
+        {type:'rawlist',name:'rawlist',message:'Milline nendest oleks teie unistuse auto', choices: ['Lamborghini','Bugatti','Ferrari','Aston Martin','Porsche','BMW','AUDI']},
+        {type:'password',name:'password',message:'Mis on teie GitHub-i salasõna?', mask:''},
+        {type:'confirm',name:'confirm',message:'Kas teie arvates Matrix on reaalne?'},  
+        {type:'checkbox',name:'checkbox',message:'Mis on teie sugu?', choices: ['Mees','Naine',]},
+        {type:'number',name:'number',message:'Mis on teie isikukood?'}, 
+        {type:'list',name:'list',message:'Kuhu te reisiksite?', choices: ["Läti","Prantsusmaa","Itaalia","Slovakia","Austraalia","India","Hispaania","Portugal","USA"]},
+        {type:'expand',name:'expand',message:'Kas see töö on positiivse hinde vääriline?', choices: [{key:"y",value:"JAH"},{key:"n",value:"EI"}]},
+        {type:'editor',name:'editor',message:''}, 
     ])
     .then((answers) => {
-        console.log(`I am ${answers.age} years old`);
-        console.log(`My height is ${answers.height} `);
-        console.log(`I am ${answers.gender} `);
-        console.log(`My favourite color is ${answers.color} `);
-        console.log(`My favourite car is ${answers.car} `);
-        console.log(`${answers.sex}, condom is sex`);
-        console.log(`${answers.password}`);
-        console.log(`${answers.confirm}`);
-
+        console.log(answers.input);
+        console.log(`Teie unistuse auto on ${answers.rawlist}`);
+        console.log(`Teie GitHub-i salasõna on ${answers.password}`);
+        console.log(`Te arvate, et matrix on ${answers.confirm}`);
+        console.log(`Teie sugu on ${answers.checkbox}`);
+        console.log(`Teie isikukood on ${answers.number}`);
+        console.log(`Te reisiksite ${answers.list}`);
+        console.log(`See töö ${answers.expand}`);
+        console.log(` ${answers.editor}`);
     })
+
